@@ -228,12 +228,13 @@ class Peon(Pieza):
         self.Color = color
         self.direccion = direccion
 
-    def movimientos_disponibles(self, x, y, tablero, Color = None):
+    def movimientos_disponibles(self, x, y, tablero, Color=None):
         if Color is None:
             Color = self.Color
         respuestas = []
 
-
+        if (x+1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x + 1, y + self.direccion):
+            respuestas.append((x + 1, y + self.direccion))
 
 
 uniDict = {BLANCAS: {Peon: "♙", Torre: "♖", Caballo: "♘", Alfil: "♗", Rey: "♔", Reina: "♕"},
