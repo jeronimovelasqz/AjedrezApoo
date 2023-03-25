@@ -5,8 +5,8 @@ class Pieza:
     COLOR_NEGRO = "yellow"
     COLOR_BLANCO = "blue"
 
-    def __init__(self, black=True):
-        self.black = black
+    def __init__(self, negro=True):
+        self.negro = negro
 
     def obtener_posicion_final(self, pieza, columna_inicial, fila_inicial, ultima_posicion_array, estructura_tablero):
 

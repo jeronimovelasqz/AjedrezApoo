@@ -1,3 +1,6 @@
+from Clase_pieza import Pieza
+
+
 class Alfil(Pieza):
 
     def __init__(self, negro):
@@ -19,7 +22,6 @@ class Alfil(Pieza):
             return True
 
         return jaque_final_valido
-
 
 # implementacion tiempo con date tiem
 
