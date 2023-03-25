@@ -136,7 +136,7 @@ class Pieza:
 
     def isValid(self, posicion_inicial, posicion_final, Color, tablero):
         if posicion_final in self.movimientos_disponibles(posicion_inicial[0], posicion_inicial[1], tablero,
-                                                          Color = Color):
+                                                          Color=Color):
             return True
         return False
 
@@ -191,3 +191,23 @@ def caballo_lista(x, y, int1, int2):
 def rey_lista(x, y):
     return [(x + 1, y), (x + 1, y + 1), (x + 1, y - 1), (x, y + 1), (x, y - 1), (x - 1, y), (x - 1, y + 1),
             (x - 1, y - 1)]
+
+
+class Caballo(Pieza):
+    pass
+
+
+class Torre(Pieza):
+    pass
+
+
+class Alfil(Pieza):
+    pass
+
+
+class Reina(Pieza):
+    pass
+
+
+class Peon(Pieza):
+    pass
