@@ -237,7 +237,7 @@ class Peon(Pieza):
             respuestas.append((x + 1, y + self.direccion))
 
         if (x - 1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x - 1, y + self.direccion):
-            respuestas.append((x  1, y + self.direccion))
+            respuestas.append((x + 1, y + self.direccion))
 
         if (x + 1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x + 1, y + self.direccion):
             pass

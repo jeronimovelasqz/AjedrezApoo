@@ -19,3 +19,9 @@ class Alfil(Pieza):
             return True
 
         return jaque_final_valido
+
+
+# implementacion tiempo con date tiem
+
+#   def timestap(self):
+#       pass

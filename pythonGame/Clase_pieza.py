@@ -70,7 +70,8 @@ class Pieza:
                 if estructura_tablero[c][i].negro is not None:
                     return jaque_final_valido
 
-        if estructura_tablero[ultima_columna][ultima_fila].negro == estructura_tablero[columna_inicial][fila_inicial].negro:
+        if estructura_tablero[ultima_columna][ultima_fila].negro == estructura_tablero[columna_inicial][
+            fila_inicial].negro:
             return jaque_final_valido
 
         jaque_final_valido = True

@@ -1,3 +1,6 @@
+
+
+
 class Peon(Pieza):
 
     def __init__(self):
