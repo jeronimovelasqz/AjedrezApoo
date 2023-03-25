@@ -1,17 +1,12 @@
 import itertools
 import exepciones
 import itertools
-import fichas
 
 # Definimos variables CONSTANTES
 # Guia de estilo PEP8
 
 BLANCAS = "blancas"
 NEGRAS = "negras"
-
-# uniDict = {WHITE: {Pawn: "♙", Rook: "♖", Knight: "♘", Bishop: "♗", King: "♔", Queen: "♕"},
-# BLACK: {Pawn: "♟️", Rook: "♜", Knight: "♞", Bishop: "♝", King: "♚", Queen: "♛"}}
-
 
 # cardinales y diagonales
 chessCardinals = [(1, 0), (0, 1), (-1, 0), (0, -1)]
@@ -194,20 +189,52 @@ def rey_lista(x, y):
 
 
 class Caballo(Pieza):
-    pass
+    def movimientos_disponibles(self, x, y, tablero, Color=None):
+        if Color is None:
+            Color = self.Color
+        return [(xx, yy) for xx, yy in caballo_lista(x, y, 2, 1) if self.no_hay_conflicto(tablero, Color, xx, yy)]
 
 
 class Torre(Pieza):
-    pass
+    def movimientos_disponibles(self, x, y, tablero, Color=None):
+        if Color is None:
+            Color = self.Color
+        return self.AdNauseum(x, y, tablero, Color, chessCardinals)
 
 
 class Alfil(Pieza):
-    pass
+    def movimientos_disponibles(self, x, y, tablero, Color=None):
+        if not Color:
+            Color = self.Color
+            return self.AdNauseum(x, y, tablero, Color, chessDiagonals)
 
 
 class Reina(Pieza):
-    pass
+    def movimientos_disponibles(self, x, y, tablero, Color=None):
+        pass
+
+
+class Rey(Pieza):
+    def movimientos_disponibles(self, x, y, tablero, Color=None):
+        if Color is None:
+            Color = self.Color
+        return [(xx, yy) for xx, yy in rey_lista(x, y) if self.no_hay_conflicto(tablero, Color, xx, yy)]
 
 
 class Peon(Pieza):
-    pass
+    def __init__(self, color, nombre, direccion):
+        super().__init__(color, nombre)
+        self.nombre = nombre
+        self.Color = color
+        self.direccion = direccion
+
+    def movimientos_disponibles(self, x, y, tablero, Color = None):
+        if Color is None:
+            Color = self.Color
+        respuestas = []
+
+
+
+
+uniDict = {BLANCAS: {Peon: "♙", Torre: "♖", Caballo: "♘", Alfil: "♗", Rey: "♔", Reina: "♕"},
+           NEGRAS: {Peon: "♟️", Torre: "♜", Caballo: "♞", Alfil: "♝", Rey: "♚", Reina: "♛"}}
