@@ -1,9 +1,9 @@
-
+from Clase_pieza import Pieza
 
 
 class Peon(Pieza):
 
-    def __init__(self):
+    def __init__(self, negro):
         Pieza.__init__(self, negro)
         if self.simbolo:
             self.simbolo = "simbolo"
