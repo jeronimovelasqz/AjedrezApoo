@@ -233,9 +233,14 @@ class Peon(Pieza):
             Color = self.Color
         respuestas = []
 
-        if (x+1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x + 1, y + self.direccion):
+        if (x + 1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x + 1, y + self.direccion):
             respuestas.append((x + 1, y + self.direccion))
 
+        if (x - 1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x - 1, y + self.direccion):
+            respuestas.append((x  1, y + self.direccion))
+
+        if (x + 1, y + self.direccion) in tablero and self.no_hay_conflicto(tablero, Color, x + 1, y + self.direccion):
+            pass
 
 uniDict = {BLANCAS: {Peon: "♙", Torre: "♖", Caballo: "♘", Alfil: "♗", Rey: "♔", Reina: "♕"},
            NEGRAS: {Peon: "♟️", Torre: "♜", Caballo: "♞", Alfil: "♝", Rey: "♚", Reina: "♛"}}
