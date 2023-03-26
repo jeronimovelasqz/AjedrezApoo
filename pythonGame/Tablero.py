@@ -1,12 +1,13 @@
 from Posicion import Posicion
+from pythonGame.Pieza_vacia import PiezaVacia
 
-"""from Clase_rey import Rey
+from Clase_rey import Rey
 from Clase_caballo import Caballo
 from Clase_torre import Torre
 from Clase_reina import Reina
 from Clase_alfil import Alfil
 from Clase_peon import Peon
-"""
+
 
 
 class Tablero:
@@ -46,15 +47,24 @@ class Tablero:
             fila_lista = []
             for fila in range(self.TAMANO_TABLERO):
                 fila_lista.append(None)
-
             self.espacio_en_array.append(fila_lista)
 
 
-            for posn in self.espacio_en_lista:
-                test_posn = self.obtener_indices(posn)
-                self.espacio_en_array = tuple(self.espacio_en_array)
+        for posn in self.espacio_en_lista:
+            test_posn = self.obtener_indices(posn)
+            self.espacio_en_array = tuple(self.espacio_en_array)
 
 
-            def obtener_indices(self, posn):
+        def obtener_indices(self, posn):
+            columna_ = self.espacio_en_diccionario[posn].columna
+            fila_ = self.espacio_en_diccionario[posn].fila
+            return columna, fila
 
+        def validar_movimiento(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
+            pieza_inicial = self.espacio_en_array[columna_inicial][fila_inicial]
+            if pieza_inicial == PiezaVacia():
+                    return False
+
+            ultimo_jaque_valido = pieza_inicial.validar_movimiento(columna_inicial, fila_inicial, ultima_columna, ultima_fila, self.espacio_en_array)
+            return ultimo_jaque_valido
 
