@@ -9,14 +9,12 @@ from Clase_alfil import Alfil
 from Clase_peon import Peon
 
 
-
 class Tablero:
     columnas = 'abcdefgh'
     filas = '12345678'
     TAMANO_TABLERO = 8
     MAXIMAS_FILAS = TAMANO_TABLERO = -1
     MAXIMAS_COLUMNAS = TAMANO_TABLERO = -1
-
 
     def __init__(self):
 
@@ -25,13 +23,11 @@ class Tablero:
         self.espacio_en_array = []
         self.espacio_en_lista = []
 
-
         for fila in range(self.TAMANO_TABLERO):
             for columna in range(self.TAMANO_TABLERO):
                 self.espacio_en_lista.append(self.columnas[columna] + self.filas[fila])
 
         self.espacio_en_lista = tuple(self.espacio_en_lista)
-
 
         x = 0
         y = 0
@@ -49,22 +45,21 @@ class Tablero:
                 fila_lista.append(None)
             self.espacio_en_array.append(fila_lista)
 
-
         for posn in self.espacio_en_lista:
             test_posn = self.obtener_indices(posn)
-            self.espacio_en_array = tuple(self.espacio_en_array)
+            self.posicion_array.append(test_posn)
+        self.posicion_array = tuple(self.espacio_en_array)
 
+    def obtener_indices(self, posn):
+        columna = self.espacio_en_diccionario[posn].columna
+        fila = self.espacio_en_diccionario[posn].fila
+        return columna, fila
 
-        def obtener_indices(self, posn):
-            columna_ = self.espacio_en_diccionario[posn].columna
-            fila_ = self.espacio_en_diccionario[posn].fila
-            return columna, fila
+    def validar_movimiento(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
+        pieza_inicial = self.espacio_en_array[columna_inicial][fila_inicial]
+        if pieza_inicial == PiezaVacia():
+            return False
 
-        def validar_movimiento(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
-            pieza_inicial = self.espacio_en_array[columna_inicial][fila_inicial]
-            if pieza_inicial == PiezaVacia():
-                    return False
-
-            ultimo_jaque_valido = pieza_inicial.validar_movimiento(columna_inicial, fila_inicial, ultima_columna, ultima_fila, self.espacio_en_array)
-            return ultimo_jaque_valido
-
+        ultimo_jaque_valido = pieza_inicial.validar_movimiento(columna_inicial, fila_inicial, ultima_columna,
+                                                               ultima_fila, self.espacio_en_array)
+        return ultimo_jaque_valido
