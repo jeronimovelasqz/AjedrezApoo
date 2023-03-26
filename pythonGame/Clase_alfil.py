@@ -4,7 +4,7 @@ from Clase_pieza import Pieza
 class Alfil(Pieza):
 
     def __init__(self, negro):
-        Pieza.__init__(self.negro)
+        Pieza.__init__(self, negro)
         if self.negro:
             self.simbolo = "simbolo"
 

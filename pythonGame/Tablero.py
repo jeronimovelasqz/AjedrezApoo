@@ -13,8 +13,8 @@ class Tablero:
     columnas = 'abcdefgh'
     filas = '12345678'
     TAMANO_TABLERO = 8
-    MAXIMAS_FILAS = TAMANO_TABLERO = -1
-    MAXIMAS_COLUMNAS = TAMANO_TABLERO = -1
+    MAXIMAS_FILAS = TAMANO_TABLERO - 1
+    MAXIMAS_COLUMNAS = TAMANO_TABLERO - 1
 
     def __init__(self):
 
@@ -272,4 +272,4 @@ class Tablero:
 
 prueba = Tablero()
 print(prueba.inicializador_tablero())
-print(prueba.space_points_ref())
+print(prueba.visualizacion_tablero())
