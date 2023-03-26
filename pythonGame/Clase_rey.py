@@ -7,6 +7,7 @@ class Rey(Pieza):
     def __init__(self, negro):
 
         Pieza.__init__(self, negro)
+
         self.en_jaque = False
         if self.negro:
             self.simbolo = "simbolo"
