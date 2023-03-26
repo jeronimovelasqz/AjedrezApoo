@@ -65,8 +65,21 @@ class Tablero:
         return ultimo_jaque_valido
 
     def obtener_posicion_rey(self, estructura_tablero):
-        pass
+        encontro_rey_negro = False
+        encontro_rey_blanco = False
 
+        for columna, lista_columna in enumerate(estructura_tablero):
+            for fila in range(len(lista_columna)):
+                if estructura_tablero[columna][fila].simbolo == "simbolo":
+                    encontro_rey_negro = True
+                    posicion_rey_negro = Posicion(columna, fila)
+                elif estructura_tablero[columna][fila].simbolo == "simbolo"
+                    encontro_rey_blanco = True
+                    posicion_rey_blanco = Posicion(columna, fila)
+                if encontro_rey_blanco and encontro_rey_negro:
+                    break
+
+        return posicion_rey_negro, posicion_rey_blanco
 
     def jaque_reyes(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
         pass
