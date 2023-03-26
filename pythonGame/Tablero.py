@@ -82,11 +82,32 @@ class Tablero:
         return posicion_rey_negro, posicion_rey_blanco
 
     def jaque_reyes(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
-        pass
+        copia_tablero = self.movimiento_espejo(columna_inicial, fila_inicial, ultima_columna, ultima_fila):
 
+        rey_blanco = Rey(True)
+        rey_negro = Rey(True)
+
+        assert(rey_negro.en_jaque == False)
+        assert(rey_negro.en_jaque == False)
+
+        posicion_rey_negro, posicion_rey_blanco = self.obtener_posicion_rey(copia_tablero)
+
+        rey_negro.en_jaque = rey_negro.en_jaque(rey_negro.columna , rey_negro.fila, copia_tablero )
+        rey_blanco.en_jaque = rey_blanco.en_jaque(rey_blanco.columna , rey_blanco.fila, copia_tablero)
+
+        return rey_negro, rey_blanco
 
     def jaque_mate_reyes(self, turno_negras):
-        pass
+        jaque_mate = True
+
+        for columna, lista_piezas in enumerate(self.espacio_en_array)
+            for fila, objeto_pieza in enumerate(lista_piezas):
+                if objeto_pieza.negro == turno_negras:
+                    movimientos_posibles = objeto_pieza.obtener_posicion_final(objeto_pieza, columna, fila, self.posicion_array, self.posicion_array)
+                    if objeto_pieza.negro == turno_negras:
+                        if objeto_pieza.simbolo != "simbolo" and objeto_pieza.simbolo != "simbolo":
+                            posicion_rey_negro, posicion_rey_blanco = self.obtener_posicion_rey(self.espacio_en_array)
+
 
 
 

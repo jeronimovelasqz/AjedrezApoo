@@ -1,6 +1,6 @@
 from Clase_pieza import Pieza
 
-ds
+
 class Peon(Pieza):
 
     def __init__(self, negro):

@@ -15,7 +15,7 @@ class Rey(Pieza):
             self.simbolo = "simbolo"
 
 
-    def verificar_jaque(self, columna_rey, fila_rey , estructura_tablero):
+    def verificar_jaque(self, columna_rey, fila_rey, estructura_tablero):
         rey_en_jaque = False
 
         for columna, lista_de_piezas in enumerate(estructura_tablero):
