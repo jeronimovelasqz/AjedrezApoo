@@ -97,7 +97,7 @@ class Tablero:
 
         return rey_negro, rey_blanco
 
-    def jaque_mate_reyes(self, turno_negras):
+    def jaque_mate_rey(self, turno_negras):
         jaque_mate = True
 
         for columna, lista_piezas in enumerate(self.espacio_en_array)
@@ -108,11 +108,42 @@ class Tablero:
                         if objeto_pieza.simbolo != "simbolo" and objeto_pieza.simbolo != "simbolo":
                             posicion_rey_negro, posicion_rey_blanco = self.obtener_posicion_rey(self.espacio_en_array)
 
+                        if turno_negras:
+                            columna_rey  = posicion_rey_negro.columna
+                            fila_rey = posicion_rey_negro
+                            rey = Rey(False)
+
+                        else:
+                            columna_rey = posicion_rey_blanco.columna
+                            fila_rey = posicion_rey_blanco.fila
+                            rey = Rey(False)
+
+                        for ultima_posicion in movimientos_posibles:
+                            copia_tablero = self.movimiento_espejo(columna, fila, ultima_posicion[0], ultima_posicion[1])
+                            en_jaque = rey.verificar_jaque(columna_rey, fila_rey, copia_tablero)
+                            if not en_jaque:
+                                en_jaque = False
+                                break
+                    else:
+                        rey = Rey(turno_negras):
+                        for ultima_posicion in movimientos_posibles:
+                            copia_tablero = self.movimiento_espejo(columna, fila, ultima_posicion[0], ultima_posicion[1])
+                            en_jaque = rey.verificar_jaque(ultima_posicion[0], ultima_posicion[1], copia_tablero)
+                            if not en_jaque:
+                                jaque_mate = False
+                                break
+                if not jaque_mate:
+                    break
+            if not jaque_mate:
+                break
+        return jaque_mate
 
 
+    def movimiento_espejo(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
 
-    def movimiento_espejo(self):
-        pass
+        copia_tablero = copy.deepcopy(self.espacio_en_array)
+        pieza_inicial = copia_tablero[columna_inicial][fila_inicial]
+
 
 
 
