@@ -156,7 +156,63 @@ class Tablero:
         return copia_tablero
 
     def visualizacion_tablero(self):
-        pass
+        print("\n")
+        print("   ", end="")
+        for i in range(self.TAMANO_TABLERO):
+            print(self.columnas[i].center(7), end=" ")
 
-    def visualizacion_tablero(self):
-        pass
+        print("\n" + " ho" + "_" * (8 * 8))
+        print("  " + "|       " * 8 + "|")
+
+        for i in range(self.TAMANO_TABLERO):
+            print(self.filas[-(i + 1)], end=" ")
+
+            for j in range(self.TAMANO_TABLERO):
+                print("|  " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "   ", end='')
+
+            print("| " + self.filas[-(i + 1)] + "\n" + "  ", end="")
+
+            for k in range(self.TAMANO_TABLERO):
+                if i < 7:
+
+                    print("|" + "_" * 7, end="")
+                else:
+                    print("|" + "_" * 7, end="")
+
+            print("|" + "\n", end="")
+
+        print("   ", end="")
+        for i in range(self.TAMANO_TABLERO):
+            print(self.columnas[i].center(7), end=" ")
+        print("")
+
+    def __str__(self):
+        grafico = ''
+        grafico += "\n"
+        grafico += "   "
+
+        for i in range(self.TAMANO_TABLERO):
+            grafico += self.columnas[i].center(7) + ' '
+
+        grafico += "\n" + "  _" + "_" * (8 * 8) + '\n'
+
+        for i in range(self.TAMANO_TABLERO):
+            grafico += self.filas[-(i + 1)] + ' '
+
+            for j in range(self.TAMANO_TABLERO):
+                grafico += "| " + self.filas[-(i + 1)] + "\n" + "  "
+
+            for k in range(self.TAMANO_TABLERO):
+                if i < 7:
+                    grafico += "|" + "_" * 7
+                else:
+                    grafico += "|" + "_" * 7
+
+            grafico += "|" + "\n"
+
+        grafico += "  "
+        for i in range(self.TAMANO_TABLERO):
+            grafico += self.columnas[i].center(7) + ' '
+        grafico += "\n"
+        return grafico
+
