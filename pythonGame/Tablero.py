@@ -26,7 +26,6 @@ class Tablero:
         for fila in range(self.TAMANO_TABLERO):
             for columna in range(self.TAMANO_TABLERO):
                 self.espacio_en_lista.append(self.columnas[columna] + self.filas[fila])
-
         self.espacio_en_lista = tuple(self.espacio_en_lista)
 
         x = 0
@@ -73,7 +72,7 @@ class Tablero:
                 if estructura_tablero[columna][fila].simbolo == "simbolo":
                     encontro_rey_negro = True
                     posicion_rey_negro = Posicion(columna, fila)
-                elif estructura_tablero[columna][fila].simbolo == "simbolo"
+                elif estructura_tablero[columna][fila].simbolo == "simbolo":
                     encontro_rey_blanco = True
                     posicion_rey_blanco = Posicion(columna, fila)
                 if encontro_rey_blanco and encontro_rey_negro:
@@ -92,8 +91,8 @@ class Tablero:
 
         posicion_rey_negro, posicion_rey_blanco = self.obtener_posicion_rey(copia_tablero)
 
-        rey_negro.en_jaque = rey_negro.en_jaque(rey_negro.columna , rey_negro.fila, copia_tablero )
-        rey_blanco.en_jaque = rey_blanco.en_jaque(rey_blanco.columna , rey_blanco.fila, copia_tablero)
+        rey_negro.en_jaque = rey_negro.verificar_jaque(rey_negro.columna , rey_negro.fila, copia_tablero )
+        rey_blanco.en_jaque = rey_blanco.verificar_jaque(rey_blanco.columna , rey_blanco.fila, copia_tablero)
 
         return rey_negro, rey_blanco
 
@@ -143,6 +142,12 @@ class Tablero:
 
         copia_tablero = copy.deepcopy(self.espacio_en_array)
         pieza_inicial = copia_tablero[columna_inicial][fila_inicial]
+        copia_tablero[columna_inicial][fila_inicial] = PiezaVacia()
+        copia_tablero[ultima_columna][ultima_fila] = pieza_inicial
+        return copia_tablero
+
+    def visualizacion_tablero(self):
+        pass
 
 
 
