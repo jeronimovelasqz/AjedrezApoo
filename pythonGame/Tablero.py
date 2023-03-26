@@ -81,34 +81,35 @@ class Tablero:
         return posicion_rey_negro, posicion_rey_blanco
 
     def jaque_reyes(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
-        copia_tablero = self.movimiento_espejo(columna_inicial, fila_inicial, ultima_columna, ultima_fila):
+        copia_tablero = self.movimiento_espejo(columna_inicial, fila_inicial, ultima_columna, ultima_fila)
 
         rey_blanco = Rey(True)
         rey_negro = Rey(True)
 
-        assert(rey_negro.en_jaque == False)
-        assert(rey_negro.en_jaque == False)
+        assert (rey_negro.en_jaque == False)
+        assert (rey_negro.en_jaque == False)
 
         posicion_rey_negro, posicion_rey_blanco = self.obtener_posicion_rey(copia_tablero)
 
-        rey_negro.en_jaque = rey_negro.verificar_jaque(rey_negro.columna , rey_negro.fila, copia_tablero )
-        rey_blanco.en_jaque = rey_blanco.verificar_jaque(rey_blanco.columna , rey_blanco.fila, copia_tablero)
+        rey_negro.en_jaque = rey_negro.verificar_jaque(rey_negro.columna, rey_negro.fila, copia_tablero)
+        rey_blanco.en_jaque = rey_blanco.verificar_jaque(rey_blanco.columna, rey_blanco.fila, copia_tablero)
 
         return rey_negro, rey_blanco
 
     def jaque_mate_rey(self, turno_negras):
         jaque_mate = True
 
-        for columna, lista_piezas in enumerate(self.espacio_en_array)
+        for columna, lista_piezas in enumerate(self.espacio_en_array):
             for fila, objeto_pieza in enumerate(lista_piezas):
                 if objeto_pieza.negro == turno_negras:
-                    movimientos_posibles = objeto_pieza.obtener_posicion_final(objeto_pieza, columna, fila, self.posicion_array, self.posicion_array)
+                    movimientos_posibles = objeto_pieza.obtener_posicion_final(objeto_pieza, columna, fila,
+                                                                               self.posicion_array, self.posicion_array)
                     if objeto_pieza.negro == turno_negras:
                         if objeto_pieza.simbolo != "simbolo" and objeto_pieza.simbolo != "simbolo":
                             posicion_rey_negro, posicion_rey_blanco = self.obtener_posicion_rey(self.espacio_en_array)
 
                         if turno_negras:
-                            columna_rey  = posicion_rey_negro.columna
+                            columna_rey = posicion_rey_negro.columna
                             fila_rey = posicion_rey_negro
                             rey = Rey(False)
 
@@ -118,15 +119,17 @@ class Tablero:
                             rey = Rey(False)
 
                         for ultima_posicion in movimientos_posibles:
-                            copia_tablero = self.movimiento_espejo(columna, fila, ultima_posicion[0], ultima_posicion[1])
+                            copia_tablero = self.movimiento_espejo(columna, fila, ultima_posicion[0],
+                                                                   ultima_posicion[1])
                             en_jaque = rey.verificar_jaque(columna_rey, fila_rey, copia_tablero)
                             if not en_jaque:
                                 en_jaque = False
                                 break
                     else:
-                        rey = Rey(turno_negras):
+                        rey = Rey(turno_negras)
                         for ultima_posicion in movimientos_posibles:
-                            copia_tablero = self.movimiento_espejo(columna, fila, ultima_posicion[0], ultima_posicion[1])
+                            copia_tablero = self.movimiento_espejo(columna, fila, ultima_posicion[0],
+                                                                   ultima_posicion[1])
                             en_jaque = rey.verificar_jaque(ultima_posicion[0], ultima_posicion[1], copia_tablero)
                             if not en_jaque:
                                 jaque_mate = False
@@ -137,6 +140,12 @@ class Tablero:
                 break
         return jaque_mate
 
+    def movimiento(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
+
+        pieza_inicial = self.espacio_en_array[columna_inicial][fila_inicial]
+        self.espacio_en_array[columna_inicial][fila_inicial] = PiezaVacia
+        if self.espacio_en_array[ultima_columna][ultima_fila].negro is not None:
+            print("{0} ha sido capturado! ".format(self.espacio_en_array[ultima_columna][ultima_fila].simbolo))
 
     def movimiento_espejo(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
 
@@ -149,9 +158,5 @@ class Tablero:
     def visualizacion_tablero(self):
         pass
 
-
-
-
     def visualizacion_tablero(self):
         pass
-
