@@ -1,6 +1,6 @@
 from Posicion import Posicion
 from pythonGame.Pieza_vacia import PiezaVacia
-
+import copy
 from Clase_rey import Rey
 from Clase_caballo import Caballo
 from Clase_torre import Torre
@@ -63,3 +63,25 @@ class Tablero:
         ultimo_jaque_valido = pieza_inicial.validar_movimiento(columna_inicial, fila_inicial, ultima_columna,
                                                                ultima_fila, self.espacio_en_array)
         return ultimo_jaque_valido
+
+    def obtener_posicion_rey(self, estructura_tablero):
+        pass
+
+
+    def jaque_reyes(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila):
+        pass
+
+
+    def jaque_mate_reyes(self, turno_negras):
+        pass
+
+
+
+    def movimiento_espejo(self):
+        pass
+
+
+
+    def visualizacion_tablero(self):
+        pass
+
