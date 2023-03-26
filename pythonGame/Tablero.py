@@ -269,6 +269,29 @@ class Tablero:
                 print("\n")
                 contador_impresiones_consola = 0
 
+    def test_init(self):
+
+        for columna in range(self.TAMANO_TABLERO):
+            for fila in range(self.TAMANO_TABLERO):
+                self.espacio_en_array[columna][fila] = None
+
+        self.espacio_en_array[3][6] = Torre(True)
+        self.espacio_en_array[0][7] = Torre(False)
+        self.espacio_en_array[0][5] = Torre(False)
+        self.espacio_en_array[7][0] = Torre(False)
+        self.espacio_en_array[4][7] = Rey(True)
+        self.espacio_en_array[4][0] = Rey(False)
+        self.espacio_en_array[3][7] = Reina(True)  # d8
+        self.espacio_en_array[3][0] = Reina(False)  # d1
+
+        for j in range(self.TAMANO_TABLERO):
+            self.espacio_en_array[j][1] = Peon(False)
+
+        for i in range(len(self.espacio_en_array)):
+            for j in range(len(self.espacio_en_array[i])):
+                if self.espacio_en_array[i][j] is None:
+                    self.espacio_en_array[i][j] = PiezaVacia()
+
 
 prueba = Tablero()
 print(prueba.inicializador_tablero())

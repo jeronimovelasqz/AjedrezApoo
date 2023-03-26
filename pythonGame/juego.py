@@ -29,11 +29,11 @@ def main():
         print(tablero_juego)
 
         if rey_en_jaque:
-            print("{0} king is in check.".format(turno.title()))
+            print("{0} el rey esta en jaque.".format(turno.title()))
             game_over = tablero_juego.jaque_mate_rey(turno_negras)
 
         if game_over:
-            print(f"GAME OVER! CHECKMATE! {enemigo.upper()} WINS!")
+            print(f"FIN DEL JUEGO, JAQUE MATE! {enemigo.upper()} GANA!")
             break
 
 
@@ -41,34 +41,34 @@ def main():
         columna_inicial, fila_inicial = tablero_juego.obtener_indices(posicion_incial)
 
         if tablero_juego.espacio_en_array[columna_inicial][fila_inicial].negro != turno_negras:
-            print(f"Invalid move! You must choose a {turno} piece to move!")
+            print(f"movimiento invalido, debe esperar {turno} y mover pieza!")
             continue
-        posicion_final = move_input(tablero_juego, "End")
+        posicion_final = move_input(tablero_juego, "deshacer")
         if posicion_final == 'deshacer':
             continue
         ultima_columna, ultima_fila = tablero_juego.obtener_indices(posicion_final)
 
 
         if not tablero_juego.validar_movimiento(columna_inicial, fila_inicial, ultima_columna, ultima_fila):
-            print("Invalid movement!")
+            print("movimiento invalido!")
             continue
 
 
         rey_negro, rey_blanco = tablero_juego.jaque_reyes(columna_inicial, fila_inicial, ultima_columna, ultima_fila)
         if not rey_en_jaque:
             if turno_negras and rey_negro.en_jaque:
-                print(f"Invalid move! Friendly {turno} king would be placed in check.")
+                print(f"movimiento invalido!  {turno} el rey seguiria en jaque.")
                 continue
             if not turno_negras and rey_blanco.en_jaque:
-                print(f"Invalid move! Friendly {turno} king would be placed in check.")
+                print(f"movimiento invalido! {turno} el rey estaria en jaque")
                 continue
 
         else:
             if turno_negras and rey_negro.en_jaque:
-                print(f"Invalid move! Friendly {turno} king is still in check.")
+                print(f"movimiento invalido! {turno} el rey sigue en jaque.")
                 continue
             if not turno_negras and rey_blanco.en_jaque:
-                print(f"Invalid move! Friendly {turno} king is still in check.")
+                print(f"movimiento invalido! {turno} el rey sigue en jaque.")
                 continue
 
 
@@ -82,7 +82,7 @@ def main():
         else:
             rey_en_jaque = False
 
-        # Finally, switch turns.
+
         if not turno_negras:
             turno_negras = True
         else:
@@ -93,46 +93,46 @@ def move_input(tablero_juego, inicio_fin):
 
     while True:
         if inicio_fin == "Deshacer":
-            print('Type "undo" to return to beginning of turn.')
+            print('Type "Deshacer" para retornar el inicio del turno.')
 
-        ultima_posicion = input(f"{inicio_fin} location? Type \"board\" at any time to view the board.\n")
+        ultima_posicion = input(f"{inicio_fin} poosicion? Type \"tablero\" para vizualizar el tablero.\n")
         ultima_posicion = ultima_posicion.lower().strip()
 
         if ultima_posicion == "tablero":
             print(tablero_juego)
             continue
 
-        if ultima_posicion.lower() == 'undo':
+        if ultima_posicion.lower() == 'Deshacer':
             return ultima_posicion
 
         elif ultima_posicion in tablero_juego.espacio_en_lista:
             pass
 
         else:
-            print("Invalid location!")
+            print("posicion invalida!")
             continue
 
         return ultima_posicion
 
 
 def test():
-    '''Prints out board lists and calls board functions for testing.'''
+
     tablero_juego = Tablero()
-    #tablero_juego.test_init()
+    tablero_juego.test_init()
     turno_negras = False
     rey_en_jaque = False
 
     print(tablero_juego, '\n\n')
-    print("SPACE ARRAY")
+    print("ESPACIO EN ARRAY")
 
     print(tablero_juego.espacio_en_array, '\n\n')
-    print("SPACE LIST")
+    print("ESPACIO EN LISTA")
 
     print(tablero_juego.espacio_en_lista, '\n\n')
-    print("SPACE DICT")
+    print("ESPACIO EN DICCIONARIO")
 
     print(tablero_juego.espacio_en_diccionario, "\n\n")
-    print("LOCATION ARRAY")
+    print("POSICION EN ARRAY")
 
     print(tablero_juego.posicion_array)
     tablero_juego.espacios_vacios_referencia()
@@ -152,11 +152,11 @@ def test():
         game_over = False
 
         if rey_en_jaque:
-            print("{0} king is in check.".format(turno.title()))
+            print("{0} rey en jaque.".format(turno.title()))
             game_over = tablero_juego.jaque_mate_rey(turno_negras)
 
         if game_over:
-            print(f"GAME OVER! CHECKMATE! {enemigo.upper()} WINS!")
+            print(f"FIN DEL JUEGO JAQUE MATE! {enemigo.upper()} GANA!")
             break
 
 
@@ -164,14 +164,14 @@ def test():
         columna_incial, fila_inicial = tablero_juego.obtener_indices(posicion_incial)
 
         if tablero_juego.espacio_en_array[columna_incial][fila_inicial].negro != turno_negras:
-            print(f"Invalid move! You must choose a {turno} piece to move!")
+            print(f"movimiento invalido , debe escoger {turno} pieza a mover!")
             continue
-        end_posn = move_input(tablero_juego, "End")
-        ultima_columna, ultima_fila = tablero_juego.obtener_indices(end_posn)
+        posicion_final = move_input(tablero_juego, "final")
+        ultima_columna, ultima_fila = tablero_juego.obtener_indices(posicion_final)
 
 
         if not tablero_juego.validar_movimiento(columna_incial, fila_inicial, ultima_columna, ultima_fila):
-            print("Invalid movement!")
+            print("Movimiento invalido!")
             continue
 
 
@@ -180,20 +180,20 @@ def test():
         if not rey_en_jaque:
 
             if turno_negras and rey_negro.in_check:
-                print(f"Invalid move! Friendly {turno} king would be placed in check.")
+                print(f"movimiento invalido {turno} rey estaria en jaque.")
                 continue
 
             if not turno_negras and rey_blanco.in_check:
-                print(f"Invalid move! Friendly {turno} king would be placed in check.")
+                print(f"movimiento invalido {turno} rey estaria en jaque.")
                 continue
         else:
 
             if turno_negras and rey_negro.in_check:
-                print(f"Invalid move! Friendly {turno} king is still in check.")
+                print(f"movimiento invalido {turno} rey sigue en jaque.")
                 continue
 
             if not turno_negras and rey_blanco.in_check:
-                print(f"Invalid move! Friendly {turno} king is still in check.")
+                print(f"movimiento invalido {turno} rey sigue en jaque.")
                 continue
 
 
