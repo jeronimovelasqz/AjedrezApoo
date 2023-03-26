@@ -1,5 +1,5 @@
 from Clase_pieza import Pieza
-from Posicion import Posicion
+
 
 
 class Rey(Pieza):
