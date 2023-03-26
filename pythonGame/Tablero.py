@@ -216,3 +216,44 @@ class Tablero:
         grafico += "\n"
         return grafico
 
+    def inicializador_tablero(self):
+
+        for columna in range(self.TAMANO_TABLERO):
+            for fila in range(self.TAMANO_TABLERO):
+                self.espacio_en_array[columna][fila] = None
+
+
+        self.espacio_en_array[0][7] = Torre(True)  # a8
+        self.espacio_en_array[7][7] = Torre(True)  # h8
+        self.espacio_en_array[0][0] = Torre(False)  # a1
+        self.espacio_en_array[7][0] = Torre(False)  # h1
+        self.espacio_en_array[4][7] = Rey(True)  # e8
+        self.espacio_en_array[4][0] = Rey(False)  # e1
+        self.espacio_en_array[3][7] = Reina(True)  # d8
+        self.espacio_en_array[3][0] = Reina(False)  # d1
+        self.espacio_en_array[1][7] = Caballo(True)  # b8
+        self.espacio_en_array[6][7] = Caballo(True)  # g8
+        self.espacio_en_array[1][0] = Caballo(False)  # b1
+        self.espacio_en_array[6][0] = Caballo(False)  # g1
+        self.espacio_en_array[2][7] = Alfil(True)  # c8
+        self.espacio_en_array[5][7] = Alfil(True)  # f8
+        self.espacio_en_array[2][0] = Alfil(False)  # c1
+        self.espacio_en_array[5][0] = Alfil(False)  # f1
+
+        # black pawns, a7 through h7:
+        for i in range(self.TAMANO_TABLERO):
+            self.espacio_en_array[i][6] = Peon(True)
+        # white pawns, a2 through h2:
+        for j in range(self.TAMANO_TABLERO):
+            self.espacio_en_array[j][1] = Peon(False)
+
+        # Finally, set empty spaces to contain NullPiece()s
+        for i in range(len(self.espacio_en_array)):
+            for j in range(len(self.espacio_en_array[i])):
+                if self.espacio_en_array[i][j] is None:
+                    self.espacio_en_array[i][j] = PiezaVacia()
+
+
+prueba = Tablero()
+
+print(prueba.inicializador_tablero())
