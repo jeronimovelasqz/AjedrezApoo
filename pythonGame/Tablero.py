@@ -158,20 +158,20 @@ class Tablero:
 
     def visualizacion_tablero(self):
         print("\n")
-        print("   ", end="")
+        print("      ", end="")
         for i in range(self.TAMANO_TABLERO):
             print(self.columnas[i].center(7), end=" ")
 
-        print("\n" + " ho" + "_" * (8 * 8))
+        print("\n" + "  " + "=" * (8 * 8))
         print("  " + "|       " * 8 + "|")
 
         for i in range(self.TAMANO_TABLERO):
             print(self.filas[-(i + 1)], end=" ")
 
             for j in range(self.TAMANO_TABLERO):
-                print("|  " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "   ", end='')
+                print("   " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "   ", end='')
 
-            print("| " + self.filas[-(i + 1)] + "\n" + "  ", end="")
+            print("   | " + self.filas[-(i + 1)] + "\n" + "  ", end="")
 
             for k in range(self.TAMANO_TABLERO):
                 if i < 7:
@@ -253,7 +253,7 @@ class Tablero:
                 if self.espacio_en_array[i][j] is None:
                     self.espacio_en_array[i][j] = PiezaVacia()
 
-    def space_points_ref(self):
+    def espacios_vacios_referencia(self):
 
         contador_impresiones_consola = 0
 
@@ -273,3 +273,6 @@ class Tablero:
 prueba = Tablero()
 print(prueba.inicializador_tablero())
 print(prueba.visualizacion_tablero())
+(prueba.espacios_vacios_referencia())
+print(prueba.inicializador_tablero())
+print(prueba.espacio_en_diccionario)

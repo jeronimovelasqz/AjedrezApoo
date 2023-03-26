@@ -6,9 +6,9 @@ class Reina(Pieza):
         Pieza.__init__(self, negro)
 
         if self.negro:
-            self.simbolo = "simbolo"
+            self.simbolo = "♛"
         else:
-            self.simbolo = "simbolo"
+            self.simbolo = "♕"
 
     def validar_movimiento(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila, estructura_tablero):
 

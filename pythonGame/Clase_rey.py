@@ -10,10 +10,10 @@ class Rey(Pieza):
 
         self.en_jaque = False
         if self.negro:
-            self.simbolo = "simbolo"
+            self.simbolo = "♚"
 
         else:
-            self.simbolo = "simbolo"
+            self.simbolo = "♔"
 
     def verificar_jaque(self, columna_rey, fila_rey, estructura_tablero):
         rey_en_jaque = False

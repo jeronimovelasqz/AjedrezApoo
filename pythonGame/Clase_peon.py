@@ -6,10 +6,10 @@ class Peon(Pieza):
     def __init__(self, negro):
         Pieza.__init__(self, negro)
         if self.negro:
-            self.simbolo = "simbolo"
+            self.simbolo = "♟"
 
         else:
-            self.simbolo = "simbolo"
+            self.simbolo = "♙"
 
     def validar_movimiento(self, columna_incial, fila_incial, ultima_columna, ultima_fila, estructura_tablero):
 
