@@ -28,7 +28,7 @@ class Pieza:
             intervalo = int(abs(ultima_fila - fila_inicial) / (ultima_fila - fila_inicial))
 
             for i in range(fila_inicial + intervalo, ultima_fila, intervalo):
-                if estructura_tablero[columna_inicial][i].black is not None:
+                if estructura_tablero[columna_inicial][i].negro is not None:
                     return jaque_final_valido
 
             if estructura_tablero[ultima_columna][ultima_fila].negro == estructura_tablero[columna_inicial][

@@ -17,7 +17,7 @@ class Caballo(Pieza):
             if estructura_tablero[columna_inicial][fila_inicial].negro != estructura_tablero[ultima_columna][ultima_fila].negro:
                 return True
 
-            if abs(columna_inicial - ultima_columna) == 2 and abs(fila_inicial - ultima_fila) == 1:
-                if estructura_tablero[columna_inicial][fila_inicial].negro != estructura_tablero[ultima_columna][ultima_fila].negro:
-                    return True
-            return False
+        if abs(columna_inicial - ultima_columna) == 2 and abs(fila_inicial - ultima_fila) == 1:
+            if estructura_tablero[columna_inicial][fila_inicial].negro != estructura_tablero[ultima_columna][ultima_fila].negro:
+                return True
+        return False

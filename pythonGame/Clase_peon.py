@@ -11,47 +11,44 @@ class Peon(Pieza):
         else:
             self.simbolo = "♙"
 
-    def validar_movimiento(self, columna_incial, fila_incial, ultima_columna, ultima_fila, estructura_tablero):
+    def validar_movimiento(self, columna_inicial, fila_inicial, ultima_columna, ultima_fila, estructura_tablero):
 
         jaque_final_valido = False
 
-        if abs(columna_incial - ultima_columna) > 1:
+        if abs(columna_inicial - ultima_columna) > 1:
             return jaque_final_valido
 
         if self.negro:
 
-            if ultima_fila >= fila_incial:
+            if ultima_fila >= fila_inicial:
                 return jaque_final_valido
 
-            if columna_incial == ultima_columna:
-                if columna_incial == 6:
+            if columna_inicial == ultima_columna:
+                if fila_inicial == 6:
                     if ultima_fila == 5:
-                        if estructura_tablero[ultima_columna][ultima_fila] is None:
+                        if estructura_tablero[ultima_columna][ultima_fila].negro is None:
                             jaque_final_valido = True
                             return jaque_final_valido
 
                     if ultima_fila == 4:
-                        if estructura_tablero[ultima_columna][ultima_fila] is None and \
+                        if estructura_tablero[ultima_columna][ultima_fila].negro is None and \
                                 estructura_tablero[ultima_columna][ultima_fila + 1].negro is None:
                             jaque_final_valido = True
                             return jaque_final_valido
                     return jaque_final_valido
 
-                if fila_incial < 6:
-                    if ultima_fila != fila_incial - 1:
+                if fila_inicial < 6:
+                    if ultima_fila != fila_inicial - 1:
                         return jaque_final_valido
-
                     if estructura_tablero[ultima_columna][ultima_fila].negro is not None:
                         return jaque_final_valido
-
                     else:
                         jaque_final_valido = True
                         return jaque_final_valido
 
-            if abs(columna_incial - ultima_columna) == 1:
-                if ultima_fila != fila_incial - 1:
+            if abs(columna_inicial - ultima_columna) == 1:
+                if ultima_fila != fila_inicial - 1:
                     return jaque_final_valido
-
                 if not estructura_tablero[ultima_columna][ultima_fila].negro:
                     jaque_final_valido = True
                     return jaque_final_valido
@@ -60,15 +57,16 @@ class Peon(Pieza):
 
         if not self.negro:
 
-            if ultima_fila <= fila_incial:
+            if ultima_fila <= fila_inicial:
                 return jaque_final_valido
 
-            if columna_incial == ultima_columna:
-                if fila_incial == 1:
+            if columna_inicial == ultima_columna:
+                if fila_inicial == 1:
                     if ultima_fila == 2:
                         if estructura_tablero[ultima_columna][ultima_fila].negro is None:
                             jaque_final_valido = True
                             return jaque_final_valido
+
                     if ultima_fila == 3:
                         if estructura_tablero[ultima_columna][ultima_fila].negro is None and \
                                 estructura_tablero[ultima_columna][ultima_fila - 1].negro is None:
@@ -76,8 +74,8 @@ class Peon(Pieza):
                             return jaque_final_valido
                     return jaque_final_valido
 
-                if fila_incial > 1:
-                    if ultima_fila != fila_incial + 1:
+                if fila_inicial > 1:
+                    if ultima_fila != fila_inicial + 1:
                         return jaque_final_valido
                     if estructura_tablero[ultima_columna][ultima_fila].negro is not None:
                         return jaque_final_valido
@@ -85,8 +83,8 @@ class Peon(Pieza):
                         jaque_final_valido = True
                         return jaque_final_valido
 
-            if abs(columna_incial - ultima_columna) == 1:
-                if ultima_fila != fila_incial + 1:
+            if abs(columna_inicial - ultima_columna) == 1:
+                if ultima_fila != fila_inicial + 1:
                     return jaque_final_valido
                 if estructura_tablero[ultima_columna][ultima_fila].negro:
                     jaque_final_valido = True

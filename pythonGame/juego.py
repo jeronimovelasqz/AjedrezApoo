@@ -1,19 +1,10 @@
-from Clase_pieza import Pieza
-from Clase_caballo import Caballo
-from Clase_torre import Torre
-from Clase_alfil import Alfil
-from Clase_peon import Peon
-from Clase_reina import Reina
-from Pieza_vacia import PiezaVacia
-from exepciones import MovimientoInvalido
-from Posicion import Posicion
-from Clase_rey import Rey
+
 from Tablero import Tablero
 
 
 def main():
     tablero_juego = Tablero()
-    tablero_juego.inicializador_tablero()
+    tablero_juego.tablero_init()
     turno_negras = False
     rey_en_jaque = False
     game_over = False
@@ -43,6 +34,7 @@ def main():
         if tablero_juego.espacio_en_array[columna_inicial][fila_inicial].negro != turno_negras:
             print(f"movimiento invalido, debe esperar {turno} y mover pieza!")
             continue
+
         posicion_final = move_input(tablero_juego, "deshacer")
         if posicion_final == 'deshacer':
             continue
@@ -95,7 +87,7 @@ def move_input(tablero_juego, inicio_fin):
         if inicio_fin == "Deshacer":
             print('Type "Deshacer" para retornar el inicio del turno.')
 
-        ultima_posicion = input(f"{inicio_fin} poosicion? Type \"tablero\" para vizualizar el tablero.\n")
+        ultima_posicion = input(f"{inicio_fin} posicion? Type \"tablero\" para vizualizar el tablero.\n")
         ultima_posicion = ultima_posicion.lower().strip()
 
         if ultima_posicion == "tablero":
@@ -135,7 +127,7 @@ def test():
     print("POSICION EN ARRAY")
 
     print(tablero_juego.posicion_array)
-    tablero_juego.espacios_vacios_referencia()
+    tablero_juego.referencias_espacios_vacios()
 
     # Game loop:
     while True:
