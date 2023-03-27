@@ -67,17 +67,16 @@ class Tablero:
 
     def obtener_posicion_rey(self, estructura_tablero):
 
-
         encontro_rey_negro = False
         encontro_rey_blanco = False
         for columna, lista_columna in enumerate(estructura_tablero):
             for fila in range(len(lista_columna)):
 
-                if estructura_tablero[columna][fila].simbolo == "♚":
+                if estructura_tablero[columna][fila].simbolo =="♚K":
                     encontro_rey_negro = True
                     posicion_rey_negro = Posicion(columna, fila)
 
-                elif estructura_tablero[columna][fila].simbolo == "♔":
+                elif estructura_tablero[columna][fila].simbolo == "♔K":
                     encontro_rey_blanco = True
                     posicion_rey_blanco = Posicion(columna, fila)
 
@@ -170,68 +169,78 @@ class Tablero:
         return copia_tablero
 
     def visualizacion_tablero(self):
-
         print("\n")
         print("   ", end="")
         for i in range(self.TAMANO_TABLERO):
-            print(self.columnas[i].center(7), end=" ")
+            print(self.columnas[i].center(5), end=" ")
 
-        print("\n" + "  " + "_" * (8 * 8))
-        print("  " + "|       " * 8 + "|")
+        print("\n" + "  " + "_" * (8 * 6))
+        print("  " + "|     " * 8 + "|")
 
         for i in range(self.TAMANO_TABLERO):
             print(self.filas[-(i + 1)], end=" ")
 
             for j in range(self.TAMANO_TABLERO):
-                print("|  " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "   ", end='')
+                print("| " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "  ", end='')
 
             print("| " + self.filas[-(i + 1)] + "\n" + "  ", end="")
 
             for k in range(self.TAMANO_TABLERO):
                 if i < 7:
-
-                    print("|" + "_" * 7, end="")
+                    print("|" + "_" * 5, end="")
                 else:
-                    print("|" + "_" * 7, end="")
+                    print("|" + "_" * 5, end="")
 
             print("|" + "\n", end="")
 
         print("   ", end="")
         for i in range(self.TAMANO_TABLERO):
-            print(self.columnas[i].center(7), end=" ")
+            print(self.columnas[i].center(5), end=" ")
         print("")
 
     def __str__(self):
-
-        graficos = ''
-        graficos += "\n"
-        graficos += "   "
+        '''Returns a string and defines print() pertaining to printing out the chessboard.'''
+        #Print out column letters:
+        graphic = ''
+        graphic += "\n"
+        graphic += "   "
         for i in range(self.TAMANO_TABLERO):
-            graficos += self.columnas[i].center(7) + ' '
+            graphic += self.columnas[i].center(7) + ' '
 
-        graficos += "\n" + "  _" + "_" * (8 * 8) + '\n'
+        # Print out line at top.
+        graphic += "\n" + "  _" + "_" * (8 * 8) + '\n'
+        # print("  " + "|       " * 8 + "|")     # Enable this line to add one more empty space line at the top
 
+        # Print out row number. self.rows is printed out starting from the end, hence rows[-(i+1)]
         for i in range(self.TAMANO_TABLERO):
-            graficos += self.filas[-(i + 1)] + ' '
+            graphic += self.filas[-(i + 1)] + ' '
 
+            # Print out each space. Print the row numbers again after 8 spaces.
+            # Print the symbols for each pieces. Printing starts at top, Positions(0,7) thru (7,7), and ends at bottom, Position(0,0) thru (7,0).
             for j in range(self.TAMANO_TABLERO):
-                graficos += "|  " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "   "
+                graphic += "|  " + self.espacio_en_array[j][-(i - self.MAXIMAS_FILAS)].simbolo + "   "
 
-            graficos += "| " + self.filas[-(i + 1)] + "\n" + "  "
+            # Print out the row number again at the end of the line.
+            graphic += "| "  + "\n" + "  "
 
+            # Print out the horizontal lines between rows.
             for k in range(self.TAMANO_TABLERO):
                 if i < 7:
-                    graficos += "|" + "_" * 7
+                    # can possibly change underscore "_" to "-" here:
+                    graphic += "|" + "_" * 7
                 else:
-                    graficos += "|" + "_" * 7
+                    graphic += "|" + "_" * 7
 
-            graficos += "|" + "\n"
+            # Print the right end of the board. Go to the next line.
+            graphic += "|" + "\n"
 
-        graficos += "   "
+        #Print out column letters again:
+        graphic += "   "
         for i in range(self.TAMANO_TABLERO):
-            graficos += self.columnas[i].center(7) + ' '
-        graficos += "\n"
-        return graficos
+            graphic += self.columnas[i].center(7) + ' '
+        graphic += "\n"
+        return graphic
+
 
     def tablero_init(self):
 
@@ -291,7 +300,6 @@ class Tablero:
             for fila in range(self.TAMANO_TABLERO):
                 self.espacio_en_array[columna][fila] = None
 
-
         self.espacio_en_array[3][6] = Torre(True)
         self.espacio_en_array[0][7] = Torre(False)
         self.espacio_en_array[0][5] = Torre(False)
@@ -304,9 +312,6 @@ class Tablero:
         for j in range(self.TAMANO_TABLERO):
             self.espacio_en_array[j][1] = Peon(False)
 
-
-
-
         for i in range(len(self.espacio_en_array)):
             for j in range(len(self.espacio_en_array[i])):
                 if self.espacio_en_array[i][j] is None:
@@ -314,6 +319,7 @@ class Tablero:
 
 
 prueba = Tablero()
-#print(prueba.visualizacion_tablero())
-#print(prueba.referencias_espacios_vacios())
-#print(prueba.test_init())
+# print(prueba.visualizacion_tablero())
+# print(prueba.referencias_espacios_vacios())
+# print(prueba.test_init())
+#print(prueba.__str__())
